@@ -42,6 +42,17 @@ unsigned long jenkins_hash(const std::string &key)
     return hash;
 }
 
+
+class myHashtable{
+    vector<list<string,int>> myVec;
+
+    public:
+
+    myHashtable(int n){
+        
+    } 
+};
+
 int main()
 {
     // Initialize random seed
@@ -53,7 +64,7 @@ int main()
         string randomString = generateRandomWord(len);
         cout << randomString << "\t" << djb2_hash(randomString) % 37 << "\t" << jenkins_hash(randomString) % 37 << "\n";
     }
-    
+
 
     
 }
