@@ -1,22 +1,25 @@
-#include<bits/stdc++.h>
-#include "neededFunc.cpp"
+
+#include <bits/stdc++.h>
+
 using namespace std;
 
 class customProbing
 {
     vector<pair<string, int>> myVec;
     int size;
+    int currentSize;
     int numCollision;
     int totalProbe;
     int funcFlag;
     int C1, C2;
 
 public:
-    customProbing(int size,int funcFlag)
+    customProbing(int size, int funcFlag)
     {
         int c = closestPrime(size);
         myVec.resize(c, make_pair("", 0)); // Initialize all elements with empty key and zero value
         this->size = c;
+        currentSize = 0;
         this->funcFlag = funcFlag;
         totalProbe = 0;
         numCollision = 0;
@@ -26,6 +29,9 @@ public:
 
     void insertVal(string key)
     {
+       if(currentSize>=size) return;
+       if(findVal(key)!=-1) return;
+
         unsigned long index;
         int i = 0;
         unsigned long mainHash;
@@ -44,12 +50,18 @@ public:
         while (!myVec[index].first.empty()) // Check for an empty key
         {
             i++;
+            if(i>size)
+            {
+                //cout << "Cant Find Slot .. Table Not Full" << endl;
+                return;
+            }
             index = (mainHash + C1 * i * auxHash + C2 * i * i) % size;
-           // numCollision++;
+            numCollision++;
         }
 
+        
         myVec[index] = make_pair(key, size + 1); // Mark the slot as occupied
-        totalProbe += (i + 1);
+        currentSize++;
     }
 
     int findVal(string key)
@@ -69,8 +81,9 @@ public:
 
         index = (mainHash + C1 * i * auxHash + C2 * i * i) % size;
 
-        while (!myVec[index].first.empty()) // Check for an empty key
+        while (!myVec[index].first.empty())
         {
+            if(i>size) return -1;                 
             if (myVec[index].first == key)
             {
                 totalProbe += (i + 1);
@@ -79,7 +92,7 @@ public:
             i++;
             index = (mainHash + C1 * i * auxHash + C2 * i * i) % size;
         }
-        return -1; // Key not found
+        return -1;
     }
 
     void deleteVal(string key)
@@ -110,12 +123,6 @@ public:
             index = (mainHash + C1 * i * auxHash + C2 * i * i) % size;
         }
     }
-
-    int getMaxChainLength() const
-    {
-        return 0; // No chaining in custom probing
-    }
-
     int getNumCollisions() const
     {
         return numCollision;
@@ -124,5 +131,101 @@ public:
     int getTotalProbes() const
     {
         return totalProbe;
+    }
+
+    string generateRandomWord(int length)
+    {
+        const string charset = "abcdefghijklmnopqrstuvwxyz";
+        const int charsetLength = charset.length();
+        string word;
+
+        // Generate random characters
+        for (int i = 0; i < length; ++i)
+        {
+            word += charset[rand() % charsetLength];
+        }
+
+        return word;
+    }
+
+    unsigned long djb2_hash(const std::string &str)
+    {
+        unsigned long hash = 5381;
+        for (char c : str)
+        {
+            hash = ((hash << 5) + hash) + c; // hash * 33 + c
+        }
+        return hash;
+    }
+
+    unsigned long jenkins_hash(const std::string &key)
+    {
+        unsigned long hash = 0;
+        for (char c : key)
+        {
+            hash += static_cast<unsigned long>(c);
+            hash += hash << 10;
+            hash ^= hash >> 6;
+        }
+        hash += hash << 3;
+        hash ^= hash >> 11;
+        hash += hash << 15;
+        return hash;
+    }
+
+    unsigned long bernstein_hash(const std::string &str)
+    {
+        unsigned long hash = 5381;
+        for (char c : str)
+        {
+            hash = 33 * hash + static_cast<unsigned long>(c);
+        }
+        return hash;
+    }
+
+    bool isPrime(int n)
+    {
+        if (n <= 1)
+            return false;
+        if (n <= 3)
+            return true;
+
+        if (n % 2 == 0 || n % 3 == 0)
+            return false;
+
+        for (int i = 5; i * i <= n; i += 6)
+        {
+            if (n % i == 0 || n % (i + 2) == 0)
+                return false;
+        }
+
+        return true;
+    }
+
+    int closestPrime(int n)
+    {
+        // If n itself is prime, return n
+        if (isPrime(n))
+            return n;
+
+        // Find closest larger prime
+        int larger = n;
+        while (!isPrime(larger))
+        {
+            larger++;
+        }
+
+        // Find closest smaller prime
+        int smaller = n;
+        while (!isPrime(smaller))
+        {
+            smaller--;
+        }
+
+        // Determine which one is closer
+        if (abs(n - larger) < abs(n - smaller))
+            return larger;
+        else
+            return smaller;
     }
 };

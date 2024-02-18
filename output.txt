@@ -1,0 +1,213 @@
+Testing Double Hashuing :
+Table  : 1 , Double Hashing ... insert count : 1 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 1 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 2 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 2 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 3 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 3 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 4 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 4 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 5 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 5 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 6 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 6 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 7 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 7 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 8 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 8 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 9 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 9 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 10 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 10 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 11 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 11 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 12 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 12 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 13 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 13 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 14 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 14 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 15 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 15 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 16 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 16 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 17 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 17 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 18 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 18 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 19 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 19 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 20 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 20 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 21 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 21 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 22 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 22 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 23 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 23 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 24 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 24 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 25 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 25 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 26 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 26 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 27 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 27 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 28 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 28 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 29 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 29 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 30 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 30 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 31 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 31 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 32 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 32 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 33 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 33 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 34 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 34 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 35 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 35 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 36 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 36 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 37 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 37 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 38 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 38 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 39 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 39 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 40 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 40 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 41 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 41 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 42 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 42 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 43 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 43 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 44 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 44 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 45 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 45 : HT size =  47
+Table  : 1 , Double Hashing ... insert count : 46 : HT size =  47
+Cant Find Slot .. Table Not Full
+Table  : 1 , Double Hashing ... insert count : 47 : HT size =  47
+Table  : 2 , Double Hashing ... insert count : 46 : HT size =  47
+Hash Table 1 Full
+Cant Find Slot .. Table Not Full
+Hash Table 1 Full
+Table  : 2 , Double Hashing ... insert count : 47 : HT size =  47
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+Hash Table 1 Full
+Hash Table 2 Full
+arznw -1 -1
+xdtxwjm 48 48
+qavtmuwoul 48 48
+ohbhrvp -1 -1
+xnrracjl 48 48
+emfyytzwpr -1 -1
+blcgogm -1 -1
+iajgmqy -1 -1
+rngar 48 48
+wsmjuggzw -1 -1
+Avg probe for Hash function One : 2
+Avg probe for Hash function Two : 1.1

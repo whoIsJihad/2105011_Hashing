@@ -1,84 +1,67 @@
 #include <bits/stdc++.h>
-
+#include "separateChainingHeader.cpp"
+#include "doubleHashHeader.cpp"
+#include "customProbingHeader.cpp"
 using namespace std;
-
 string generateRandomWord(int length)
-{
-    const string charset = "abcdefghijklmnopqrstuvwxyz";
-    const int charsetLength = charset.length();
-    string word;
-
-    // Generate random characters
-    for (int i = 0; i < length; ++i)
     {
-        word += charset[rand() % charsetLength];
+        const string charset = "abcdefghijklmnopqrstuvwxyz";
+        const int charsetLength = charset.length();
+        string word;
+
+        // Generate random characters
+        for (int i = 0; i < length; ++i)
+        {
+            word += charset[rand() % charsetLength];
+        }
+
+        return word;
     }
-
-    return word;
-}
-
-unsigned long djb2_hash(const std::string &str)
-{
-    unsigned long hash = 5381;
-    for (char c : str)
-    {
-        hash = ((hash << 5) + hash) + c; // hash * 33 + c
-    }
-    return hash;
-}
-
-unsigned long jenkins_hash(const std::string &key)
-{
-    unsigned long hash = 0;
-    for (char c : key)
-    {
-        hash += static_cast<unsigned long>(c);
-        hash += hash << 10;
-        hash ^= hash >> 6;
-    }
-    hash += hash << 3;
-    hash ^= hash >> 11;
-    hash += hash << 15;
-    return hash;
-}
-
 int main()
 {
-    // Initialize random seed
-    srand(time(0));
+    srand(time(0)); // Initialize random seed
+    freopen("output.txt", "w", stdout);
 
-    int len = 10;
-    int uniqueDjb2Count = 0;
-    int uniqueJenkinsCount = 0;
+    doubleHashing dh1(50, 1);
+    doubleHashing dh2(50, 2);
 
-    // Set to store unique hash values
-    unordered_set<unsigned long> djb2Hashes;
-    unordered_set<unsigned long> jenkinsHashes;
+    std::cout << "Testing Double Hashuing :" << std::endl;
+    vector<string> allStrings(100);
 
-    for (int i = 0; i < 100; i++)
+    // inserting 10000 words
+    for (int i = 0; i < 100; ++i)
     {
-        string randomString = generateRandomWord(len);
-        unsigned long djb2HashValue = djb2_hash(randomString) % 199;
-        unsigned long jenkinsHashValue = jenkins_hash(randomString) % 199;
+        string randomString = generateRandomWord(rand() % 6 + 5);
 
-        // Check uniqueness and update counts
-        if (djb2Hashes.find(djb2HashValue) == djb2Hashes.end())
-        {
-            djb2Hashes.insert(djb2HashValue);
-            uniqueDjb2Count++;
-        }
+        // storing the random string
+        allStrings[i] = randomString;
 
-        if (jenkinsHashes.find(jenkinsHashValue) == jenkinsHashes.end())
-        {
-            jenkinsHashes.insert(jenkinsHashValue);
-            uniqueJenkinsCount++;       
-        }
-
-        cout << randomString << "\t" << djb2HashValue << "\t" << jenkinsHashValue << "\n";
+        // two Hashtable for two hash function
+        dh1.insertVal(randomString);
+        dh2.insertVal(randomString);
     }
 
-    cout << "Number of unique DJB2 hash values: " << uniqueDjb2Count << endl;
-    cout << "Number of unique Jenkins hash values: " << uniqueJenkinsCount << endl;
+    // searching for any 1000 of the word
+
+    for (int i = 0; i < 10; i++)
+    {
+        int randomIndex = rand() % 100;
+        string wordToSearch = allStrings[randomIndex];
+
+        cout << wordToSearch << " " << dh1.findVal(wordToSearch) << " " << dh2.findVal(wordToSearch) << endl;
+    }
+
+    cout << "Avg probe for Hash function One : " << 1.0*dh1.getTotalProbes() / 10 << endl;
+    cout << "Avg probe for Hash function Two : " << 1.0*dh2.getTotalProbes() / 10 << endl;
+    // deleteing  1000 words
+
+    for (int i = 0; i < 10; i++)
+    {
+        int randomIndex = rand() % 10000;
+        string wordToDelete = allStrings[randomIndex];
+        dh1.deleteVal(wordToDelete);
+        dh2.deleteVal(wordToDelete);
+    }
 
     return 0;
 }
