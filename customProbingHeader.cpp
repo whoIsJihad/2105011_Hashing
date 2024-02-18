@@ -23,8 +23,8 @@ public:
         this->funcFlag = funcFlag;
         totalProbe = 0;
         numCollision = 0;
-        C1 = 1;
-        C2 = 1;
+        C1 = 11;
+        C2 = 7;
     }
 
     void insertVal(string key)
@@ -46,6 +46,8 @@ public:
         unsigned long auxHash = bernstein_hash(key);
 
         index = (mainHash + C1 * i * auxHash + C2 * i * i) % size;
+        if(!myVec[index].first.empty()) numCollision++;
+
 
         while (!myVec[index].first.empty()) // Check for an empty key
         {
@@ -56,7 +58,6 @@ public:
                 return;
             }
             index = (mainHash + C1 * i * auxHash + C2 * i * i) % size;
-            numCollision++;
         }
 
         
@@ -114,6 +115,7 @@ public:
 
         while (!myVec[index].first.empty()) // Check for an empty key
         {
+            if(i>size) return;
             if (myVec[index].first == key)
             {
                 myVec[index] = make_pair("", 0); // Mark the slot as empty

@@ -45,6 +45,8 @@ public:
 
         index = (mainHash + i * auxHash) % size;
 
+        if(!myVec[index].first.empty()) numCollision++;
+
         while (!myVec[index].first.empty()) // Check for an empty key
         {
             i++;
@@ -54,11 +56,10 @@ public:
                 return ;
             }
             index = (mainHash + i * auxHash) % size;
-            numCollision++;
+            //numCollision++;
         }
         myVec[index] = make_pair(key, size + 1); // Mark the slot as occupied
         currentSize++;
-        cout << "Table  : "<<funcFlag<<" , Double Hashing ... insert count : " << currentSize << " : HT size =  "<<size<<endl;
     }
 
     int findVal(string key)
@@ -115,6 +116,7 @@ public:
 
         while (!myVec[index].first.empty()) // Check for an empty key
         {
+            if(i>size) return;
             if (myVec[index].first == key)
             {
                 myVec[index] = make_pair("", 0); // Mark the slot as empty

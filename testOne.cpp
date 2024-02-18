@@ -3,6 +3,7 @@
 #include "doubleHashHeader.cpp"
 #include "customProbingHeader.cpp"
 using namespace std;
+
 string generateRandomWord(int length)
 {
     const string charset = "abcdefghijklmnopqrstuvwxyz";
@@ -17,25 +18,57 @@ string generateRandomWord(int length)
 
     return word;
 }
+pair<int, int> ReportFunction1(int funcFlag, int maxCL, int size);
+pair<int, int> ReportFunction2(int funcFlag, int size);
+pair<int, int> ReportFunction3(int funcFlag, int size);
+
+void printReport(pair<int, int> &p, int size)
+{
+    cout << "Report for size " << size << endl;
+    cout << "Average probe: " << p.first << endl;
+    cout << "Number of collision: " << p.second << endl;
+}
 int main()
 {
     srand(time(0)); // Initialize random seed
+    freopen("output.txt", "w", stdout);
 
-    int size;
-    int funcFlag;
-    int maxChainLen;
+    cout << "Testing Seprate Chaining :" << endl;
 
-    cin >> size >> maxChainLen;
+    pair<int, int> report_s_5000 = ReportFunction1(1, 5, 5000);
+    pair<int, int> report_s_10000 = ReportFunction1(1, 5, 5000);
+    pair<int, int> report_s_20000 = ReportFunction1(1, 5, 5000);
 
-    // Test separateChaining
-    separateChaining HT_separateChainingOne(size, maxChainLen, 1);
-    separateChaining HT_separateChainingTwo(size, maxChainLen, 2);
+    printReport(report_s_5000, 5000);
+    printReport(report_s_10000, 10000);
+    printReport(report_s_20000, 20000);
 
-    std::cout << "Testing separateChaining:" << std::endl;
+    pair<int, int> report_d_5000 = ReportFunction2(1, 5000);
+    pair<int, int> report_d_10000 = ReportFunction2(1, 10000);
+    pair<int, int> report_d_20000 = ReportFunction2(1, 20000);
 
+    cout << "\n\nTesting Double Hashing :" << endl;
+    printReport(report_d_5000, 5000);
+    printReport(report_d_10000, 10000);
+    printReport(report_d_20000, 20000);
+    cout << "*********************\n";
+
+    cout << "\n\nTesting Custom Probing :" << endl;
+    pair<int, int> report_c_5000 = ReportFunction3(1, 5000);
+    pair<int, int> report_c_10000 = ReportFunction3(1, 10000);
+    pair<int, int> report_c_20000 = ReportFunction3(1, 20000);
+
+    printReport(report_c_5000, 5000);
+    printReport(report_c_10000, 10000);
+    printReport(report_c_20000, 20000);
+    return 0;
+}
+
+pair<int, int> ReportFunction1(int funcFlag, int maxCL, int size)
+{
     vector<string> allStrings(10000);
+    separateChaining ht(size, maxCL, funcFlag);
 
-    // inserting 10000 words
     for (int i = 0; i < 10000; ++i)
     {
         string randomString = generateRandomWord(rand() % 6 + 5);
@@ -44,65 +77,101 @@ int main()
         allStrings[i] = randomString;
 
         // two Hashtable for two hash function
-        HT_separateChainingOne.insertVal(randomString);
-        HT_separateChainingTwo.insertVal(randomString);
+        ht.insertVal(randomString);
 
-        bool conditionOne = HT_separateChainingOne.getInsertCount() != 0 && HT_separateChainingOne.getInsertCount() % 100 == 0;
-        bool conditionTwo = HT_separateChainingOne.getCurrMaxChainLen() > HT_separateChainingOne.getMaxChainLength();
+        bool conditionOne = ht.getInsertCount() != 0 && ht.getInsertCount() % 100 == 0;
+        bool conditionTwo = ht.getCurrMaxChainLen() > ht.getMaxChainLength();
         if (conditionOne && conditionTwo)
         {
-            HT_separateChainingOne.rehashing_insert();
-        }
-
-        bool _conditionOne = HT_separateChainingTwo.getInsertCount() != 0 && HT_separateChainingTwo.getInsertCount() % 100 == 0;
-        bool _conditionTwo = HT_separateChainingTwo.getCurrMaxChainLen() > HT_separateChainingTwo.getMaxChainLength();
-        if (_conditionOne && _conditionTwo)
-        {
-            HT_separateChainingTwo.rehashing_insert();
+            ht.rehashing_insert();
         }
     }
-
-    // searching for any 1000 of the word
 
     for (int i = 0; i < 1000; i++)
     {
         int randomIndex = rand() % 10000;
         string wordToSearch = allStrings[randomIndex];
-
-        cout << wordToSearch << " " << HT_separateChainingOne.findVal(wordToSearch) << " " << HT_separateChainingTwo.findVal(wordToSearch) << endl;
-
-        // Perform search operation here
+        int ind = ht.findVal(wordToSearch);
     }
-
-    cout << "Avg probe for Hash function One : " << HT_separateChainingOne.getTotalProbe() / 1000 << endl;
-    cout << "Current Max chain Length : " << HT_separateChainingOne.getCurrMaxChainLen() << endl;
-
-    cout << "Avg probe for Hash function Two : " << HT_separateChainingTwo.getTotalProbe() / 1000 << endl;
-
-    cout << "Current Max chain Length : " << HT_separateChainingTwo.getCurrMaxChainLen() << endl;
     // deleteing  1000 words
-
     for (int i = 0; i < 1000; i++)
     {
         int randomIndex = rand() % 10000;
         string wordToDelete = allStrings[randomIndex];
-        HT_separateChainingOne.deleteVal(wordToDelete);
-        HT_separateChainingTwo.deleteVal(wordToDelete);
+        ht.deleteVal(wordToDelete);
 
-        bool condOne = HT_separateChainingOne.getDeletecount() != 0 && HT_separateChainingTwo.getDeletecount() % 100 == 0;
-        bool condTwo = HT_separateChainingOne.getCurrMaxChainLen() < HT_separateChainingTwo.getMaxChainLength() * 0.8;
+        bool condOne = ht.getDeletecount() != 0 && ht.getDeletecount() % 100 == 0;
+        bool condTwo = ht.getCurrMaxChainLen() < ht.getMaxChainLength() * 0.8;
 
         if (condOne && condTwo)
         {
-            HT_separateChainingOne.rehashing_delete();
-        }
-        bool _condOne = HT_separateChainingTwo.getDeletecount() != 0 && HT_separateChainingTwo.getDeletecount() % 100 == 0;
-        bool _condTwo = HT_separateChainingTwo.getCurrMaxChainLen() < HT_separateChainingTwo.getMaxChainLength() * 0.8;
-
-        if (_condOne && _condTwo)
-        {
-            HT_separateChainingTwo.rehashing_delete();
+            ht.rehashing_delete();
         }
     }
-    return 0;
+
+    return make_pair(1.0 * ht.getTotalProbe() / 1000, 1.0 * ht.getNumCollision());
+}
+
+pair<int, int> ReportFunction2(int funcFlag, int size)
+
+{
+    vector<string> allStrings(10000);
+
+    doubleHashing dh(size, funcFlag);
+    for (int i = 0; i < 10000; ++i)
+    {
+        string randomString = generateRandomWord(rand() % 6 + 5);
+
+        // storing the random string
+        allStrings[i] = randomString;
+        // two Hashtable for two hash function
+        dh.insertVal(randomString);
+    }
+    // finding 1000 words
+    for (int i = 0; i < 1000; i++)
+    {
+        int randomIndex = rand() % 10000;
+        string wordToSearch = allStrings[randomIndex];
+        int ind = dh.findVal(wordToSearch);
+    }
+    // deleteing  1000 words
+    for (int i = 0; i < 1000; i++)
+    {
+        int randomIndex = rand() % 10000;
+        string wordToDelete = allStrings[randomIndex];
+        dh.deleteVal(wordToDelete);
+    }
+    return make_pair(1.0 * dh.getTotalProbes() / 1000, dh.getNumCollisions());
+}
+
+pair<int, int> ReportFunction3(int funcFlag, int size)
+
+{
+    vector<string> allStrings(10000);
+
+    customProbing cp(size, funcFlag);
+    for (int i = 0; i < 10000; ++i)
+    {
+        string randomString = generateRandomWord(rand() % 6 + 5);
+
+        // storing the random string
+        allStrings[i] = randomString;
+        // Hashtable for custom probing
+        cp.insertVal(randomString);
+    }
+    // finding 1000 words
+    for (int i = 0; i < 1000; i++)
+    {
+        int randomIndex = rand() % 10000;
+        string wordToSearch = allStrings[randomIndex];
+        int ind = cp.findVal(wordToSearch);
+    }
+    // deleting 1000 words
+    for (int i = 0; i < 1000; i++)
+    {
+        int randomIndex = rand() % 10000;
+        string wordToDelete = allStrings[randomIndex];
+        cp.deleteVal(wordToDelete);
+    }
+    return make_pair(1.0 * cp.getTotalProbes() / 1000, cp.getNumCollisions());
 }
