@@ -42,23 +42,18 @@ public:
             mainHash = jenkins_hash(key);
         }
         unsigned long auxHash = bernstein_hash(key);
-
         index = (mainHash + i * auxHash) % size;
-
         if(!myVec[index].first.empty()) numCollision++;
-
-        while (!myVec[index].first.empty()) // Check for an empty key
+        while (!myVec[index].first.empty())
         {
             i++;
             if (i > size)
             {
-                //cout << "Cant Find Slot .. Table Not Full" << endl;
                 return ;
             }
             index = (mainHash + i * auxHash) % size;
-            //numCollision++;
         }
-        myVec[index] = make_pair(key, size + 1); // Mark the slot as occupied
+        myVec[index] = make_pair(key, size + 1);
         currentSize++;
     }
 

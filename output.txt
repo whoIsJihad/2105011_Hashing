@@ -1,35 +1,14 @@
-Testing Seprate Chaining :
-Report for size 5000
-Average probe: 5
-Number of collision: 3122
-Report for size 10000
-Average probe: 5
-Number of collision: 3151
-Report for size 20000
-Average probe: 6
-Number of collision: 3755
-
-
-Testing Double Hashuing :
-Report for size 5000
-Average probe: 2
-Number of collision: 2465
-Report for size 10000
-Average probe: 8
-Number of collision: 5044
-Report for size 20000
-Average probe: 1
-Number of collision: 2450
-*********************
-
-
-Testing Custom Probing :
-Report for size 5000
-Average probe: 3
-Number of collision: 2474
-Report for size 10000
-Average probe: 8
-Number of collision: 4932
-Report for size 20000
-Average probe: 1
-Number of collision: 2496
+| Size    | Collision Method  | Collision (Hash1)      | Probe (Hash1)          | Collision (Hash2)      | Probe (Hash2) |        
+--------------------------------------------------------------------------------------------------------------------------------------------
+| 5000     | Separate Chaining |             3753 	|                 6.117 |             3334	 |                 5.483 |
+|          | Double Hashing    |            2557	|                  2.621 |             2485	 |                 2.878 |
+|          | Custom Probing    |            2495 	|                 3.334 |             2453 	|                 2.452 |
+--------------------------------------------------------------------------------------------------------------------------------------------
+| 10000    | Separate Chaining |             3323 	|                 5.496 |             3011	 |                 4.996 |
+|          | Double Hashing    |            5036	|                  11.316 |             5076	 |                 6.487 |
+|          | Custom Probing    |            4977 	|                 7.518 |             4995 	|                 9.098 |
+--------------------------------------------------------------------------------------------------------------------------------------------
+| 20000    | Separate Chaining |             2196 	|                 3.833 |             2145	 |                 3.733 |
+|          | Double Hashing    |            2479	|                  1.362 |             2470	 |                 1.388 |
+|          | Custom Probing    |            2497 	|                 1.353 |             2523 	|                 1.373 |
+--------------------------------------------------------------------------------------------------------------------------------------------
